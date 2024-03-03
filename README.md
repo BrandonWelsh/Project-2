@@ -7,7 +7,15 @@ February/March 2024
 ## Program Goals
 On this project we will practice both our technical and collaborative skills. We will work in groups of 3 people. The project will be divided in 3 parts: Data Exploration, Data Cleaning and Feature Engineering, and Model Selection and Evaluation. We will collaborate with our group members to complete the project. We will also be responsible for our own individual submissions.
 
-We decided to pursue a project on image classification, as this topic was of interest to all of us. We found a dataset (details in next section) that contained images of galaxies, and plan to use this to train a variety of classification algorithms and convolutional neural networks in an attempt to maximize the train and test scores and obtain a model which can reliably classify galaxies as being one of four types: 0 - smooth and round, 1 - smooth and cigar-shaped, 2 - edge-on-disk, and 3 - unbarred spiral.
+We decided to pursue a project on image classification, as this topic was of interest to all of us. We found a dataset (details in next section) that contained images of galaxies, and plan to use this to train a variety of classification algorithms and convolutional neural networks in an attempt to maximize the train and test scores and obtain a model which can reliably classify galaxies as being one of four types: 
+
+0 - smooth and round 
+
+1 - smooth and cigar-shaped
+
+2 - edge-on-disk
+
+3 - unbarred spiral
 
 ## Data Source
 We were very lucky with the data that we found. It contained 10,000 images and already came cleaned, labeled, and split into train and test datasets. This saved us a lot of time and allowed us to dive right in and start training models. Utilizing a file called galaxy_mnist.py, we were able to download these datasets as hdf5 files into a local Resources folder, and were able to define variables for the training data (8,000 images saved as a 64x64 pixel 3D array, pre-labeled 0 thru 3, corresponding to each of the four galaxy types) and the testing data (2,000 images unique from the ones in the training dataset, but otherwise had all the same characteristics).
