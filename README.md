@@ -75,7 +75,49 @@ Sunny Kiluvia:
 TODO: discuss your process for creating all of your models, discuss modifying hyperparameters, and describe your results and their meanings.
 
 ### Arnab Roy:
-TODO
+I was tasked with creating and performing a Logistic Regression, Support Vector Machine (SVM), K-nearest Neighbors (KNN), and LeNet-5 Convolutional Neural Network. When we started the execrcise, we kind of knew the first three models, which are conventional machine learning algorithms to perform the classification task, might not be effcient for image classification. We decided to give them a try anyway and then spend some time to try to develop the Neural Network models which can handel galaxy image more efficiently .Irrespective of what model we used, I needed to flatten the raw PIL images to 1D & numpy arrays before I can use them in our models. For LeNet-5 Convolutional Neural Network, it was even needed to normalize the pixel values to be between 0 and 1 before the training data can be used to train the models. Training & Testing data was then used to calculate the Train & Test scores & predict the labels of the testing data.
+
+--- K-nearest Neighbors (KNN) ---
+I started with KNN model. I ran a for loop incrementing the number of neighbors by 2, looping through 1 to 15 & calculating the Train & Test scores for each of the neighbors. The train & test accuracy scores were then plotted against the number of neighbors to find the most optimal number of neighbors which was decided to be 9, beyond which the accuracy scores started to stabilize. The Train & Test scores were 0.723 &  0.651 respectively for 9 neighbors. Low Training Accuracy & Test data Accuracy suggests that the model is underfitting the data.
+
+
+--- Support Vector Machine (SVM) ---
+I then moved on to SVM model. Default hyperparameters of Radial Basis Function (RBF) Kernel & C=1 were used for the model. I was able train the model for all 8000 images in the training dataset. With these hyperparameters, we are able to achieve a better Train & Test scores of 0.839 & 0.748 respectively. Even though the Training Accuracy & Test data Accuracy score are still undefitting the data, the model is performing better than KNN model.
+
+--- Logistic Regression Classifier ---
+With the help of some reasearch, I kind of stipulated that convergangce of the model might be an issue with the Logistic Regression model. Tried changing the hypermater (number of iterations) from default value of 100 to 
+10,000, but the model still didn't convergence after runnin for 10 mins. This might be due to the large volume of feature galaxy image data which we are dealing with. The next logical step to get a solution here was to reduce the number of features which we reduced it to 1000 keeping the max_iter to the same value of 10000. I did achieve the model convergangce finally but its a no brainer that the model is underfitting with such less data Training & Testing Data Scores were 0.54725 & 0.482 respectively.
+
+--- LeNet-5 Convolutional Neural Network ---
+It was required to reshape x-train & x-test to the original image dimensions of 64x64x3. And then it was required to normalize the pixel values to be between 0 and 1 before the training data can be used to train the models. 
+An optimal value of 3 hyperparameters (epochs=10, validation_split=0.2, batch_size=32) were found for training the model after trying the below combinations of hyperparameters, the results of which hinted overfitting. The most effcient range of validation_split is in the range: 0.1 - 0.3, which didn't alter the results much. We decided to go with the default value of 0.2. 
+
+epochs = 10, batch_size	= 64	
+- Training Score: 0.9165
+- Testing Score: 0.801
+							
+epochs = 20, batch_size = 32	
+- Training Score: 0.94775
+- Testing Score: 0.7895
+				
+epochs = 5, batch_size = 32	
+- Training Score: 0.95525	
+- Testing Score: 0.802
+
+Tried following a tedious & dirty was of changing the other hyperparameters like activation function, optimizer, loss function etc. to see if the model can be improved. The best results which we have got is:
+manually and the best results which we have got is:
+- Training Score: 0.849
+- Testing Score: 0.787
+
+------Automating the hyperparameter tuning process using using Keras Tuner:
+Keras Tuner offers several tuners to automate 'hyperparameter tuning' in this context of improving our LeNet-5 model. This includes RandomSearch, Hyperband, BayesianOptimization and Sklearn. For this example, we'll use the Hyperband tuner, which is efficient and effective for deep learning models, that involves the below steps as practiced in the code:
+Step 1: Define Model-Building Function with Hyperparameters
+Step 2: Instantiate the Tuner and Perform Hyperparameter Search
+Step 3: Review and Retrieve the Best Model, find the best hyperparameters, train the model and get the scores.
+
+The best results which we have got using this automated process is:
+- Training Score: 0.9115
+- Testing Score: 0.8155
 
 ### Brandon Welsh:
 I was tasked with creating and performing a Gradient Boosting and Adaptive Boosting classifier algorithm, as well as a Single-Layer Convolutional Neural network. While the former didn't have hyperparameters I could change, I was able to see a difference in scores by limiting the number of images from the dataset the models were allowed to be trained on. As was expected, the scores increased as the models were given access to more training data. Unfortunately, these models are not well suited for image classification, and as such, their scores were not very high. As a reminder, we have a goal of obtaining 75% or greater test classification accuracy.
