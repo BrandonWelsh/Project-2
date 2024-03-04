@@ -24,11 +24,27 @@ The data source for our project comes from the following github repo:
 
 - https://github.com/mwalmsley/galaxy_mnist
 
-## Dependencies
-TODO: figure out all dependencies once the main code is complete
-
-## Setup Instructions
-TODO: ditto dependencies
+## Dependencies/Setup Instructions
+You will need the following Python libraries, as well as the galaxy_mnist.py file (included in this github repository). You will also need to have each of the libraries required to run the following lines of code contained within the Project-2.ipynb file:
+- from galaxy_mnist import GalaxyMNIST
+- import matplotlib.pyplot as plt
+- import numpy as np
+- from sklearn.neighbors import KNeighborsClassifier
+- from sklearn.metrics import accuracy_score
+- from sklearn.svm import SVC
+- from sklearn.linear_model import LogisticRegression
+- from sklearn import tree
+- from sklearn.ensemble import RandomForestClassifier
+- from sklearn.ensemble import ExtraTreesClassifier
+- from sklearn.ensemble import GradientBoostingClassifier
+- from sklearn.ensemble import AdaBoostClassifier
+- from tensorflow.keras.models import Sequential
+- from tensorflow.keras.layers import Conv2D, Flatten, Dense
+- from tensorflow.keras import regularizers
+- from tensorflow.keras.layers import Dropout
+- from tensorflow.keras.optimizers import Adam
+- from tensorflow.keras.utils import to_categorical
+- from tensorflow.keras import models, layers, regularizers
 
 ## How to use
 Run each cell of the Project_2.ipynb file to create and train the models used in this project. They should have already been run when uploaded to github and are ready to be viewed.
