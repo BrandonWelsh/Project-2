@@ -9,7 +9,7 @@ Due date: March 4th 2024
 ## Program Goals
 On this project we will practice both our technical and collaborative skills. We will work in groups of 3 people. The project will be divided in 3 parts: Data Exploration, Data Cleaning and Feature Engineering, and Model Selection and Evaluation. We will collaborate with our group members to complete the project. We will also be responsible for our own individual submissions.
 
-We decided to pursue a project on image classification, as this topic was of interest to all of us. We found a dataset (details in next section) that contained images of galaxies, and plan to use this to train a variety of classification algorithms and convolutional neural networks in an attempt to maximize the train and test scores and obtain a model which can reliably classify galaxies as being one of four types: 
+We decided to pursue a project on image classification, as this topic was of interest to all of us. We found a dataset (details in next section) that contained images of galaxies, and plan to use this to train a variety of classification algorithms and convolutional neural networks in an attempt to maximize the train and test scores (aiming for at least 75% classification accuracy) and obtain a model which can reliably classify galaxies as being one of four types: 
 
 0 - smooth and round 
 
@@ -74,13 +74,65 @@ Sunny Kiluvia:
 ## Team Member Analysis
 TODO: discuss your process for creating all of your models, discuss modifying hyperparameters, and describe your results and their meanings.
 
-Arnab Roy:
+### Arnab Roy:
 TODO
 
-Brandon Welsh:
-TODO
+### Brandon Welsh:
+I was tasked with creating and performing a Gradient Boosting and Adaptive Boosting classifier algorithm, as well as a Single-Layer Convolutional Neural network. While the former didn't have hyperparameters I could change, I was able to see a difference in scores by limiting the number of images from the dataset the models were allowed to be trained on. As was expected, the scores increased as the models were given access to more training data. Unfortunately, these models are not well suited for image classification, and as such, their scores were not very high. As a reminder, we have a goal of obtaining 75% or greater test classification accuracy.
 
-Sunny Kiluvia:
+--- Gradient Boosting ---
+
+Unfortunately, I quickly found that this model would have taken hours to run if given the full dataset. I first opted to limit it to the first 100 images (1/100th the size of the full dataset), and even this took a few minutes to run. The train and test scores are close to each other, but are relatively low. The model showed improvement when given 200 images rather than just 100, so it can be presumed that the score would be pretty good if given the full set of 10,000. Unfortunately, as previously stated, it would take hours to train that. I bit the bullet and tried 1,000 images. It took half an hour but it saw great improvement. It can be presumed that the score would be pretty good if given the full dataset.
+
+First 100 images:
+- Training Score: 0.4065
+- Testing Score: 0.41
+
+First 200 images:
+- Training Score: 0.5015
+- Testing Score: 0.483
+
+First 1000 images:
+- Training Score: 0.6995
+- Testing Score: 0.6575
+
+--- Adaptive Boosting ---
+
+This model, despite being given the same data, performed worse than the Gradient Boosting. It's important to note that neither of these are well suited for image classification, especially given that the data had to be transformed into a 1D array before these could even be utilized. There was no noticeable improvement between 100 and 200 images. This model ran a little faster so I increased it to 1000 images. Strangely, this is where I saw a considerable improvement, and nearly the same score as Gradient Boosting. I decided to push it to the full dataset, as this model doesn't seem to have the same runtime issue that Gradient Boosting does. Despite having the entire dataset to be trained on, this model didn't perform quite as well as I hoped, with only a 57% testing score on the full dataset.
+
+First 100 images:
+- Training Score: 0.323875
+- Testing Score: 0.323
+
+First 200 images:
+- Training Score: 0.34
+- Testing Score: 0.3195
+
+First 1000 images:
+- Training Score: 0.508
+- Testing Score: 0.4825
+
+Entire dataset:
+- Training Score: 0.606125
+- Testing Score: 0.5705
+
+--- Single-Layer Convolutional Neural Network ---
+
+I've never built a Convolutional Neural Network (CNN) before, and we haven't even covered it in class yet. Nevertheless, these are the optimal models to use for image classification tasks. I utilized Microsoft Copilot and had it give me a framework for a single-layer CNN using tensorflow. The base model of my CNN performed rather poorly, so I proceeded to alter hyperparameters to seek out the optimal score. I used Microsoft Copilot to guide me through this process, as I wasn't sure which parameters to change. It was greatly helpful as it was able to see my code and gave suggestions which actually helped to improve the score. In the end, I managed to get a training score of 1.0 and a testing score of 0.70. This is a clear sign of overfitting in my model, as the CNN performed great on the training dataset but relatively poorly on the test data. I recorded my progress, changes, and model scores to the following text file. The main project file contains the most optimized CNN that I could come up with during this process. The first and final iteration's scores are displayed below:
+
+[Single Layer CNN.txt](https://github.com/BrandonWelsh/Project-2/files/14475687/Single.Layer.CNN.txt)
+
+Single Layer CNN Iteration 1:
+- Training Score: 0.9762499928474426
+- Testing Score: 0.5040000081062317
+
+Single Layer CNN Final Iteration:
+- Training Score: 1.0
+- Testing Score: 0.7009999752044678
+
+While I was able to greatly improve the score of my model, it fell short of the goal of 75% classification accuracy. I made several other hyperparameter modifications following the achievement of this score, but none were able to achieve higher than 0.70 testing score. In addition, my model is clearly overfitting, as the training score is perfect but the testing score is iffy. To conclude, I cannot recommend a Single-Layer CNN be used in this case. It is far too simple of a model to be able to reliably capture the patterns in complex data. Luckily, this is not the only CNN our group created, and it is also expected to perform the worst as it is not a very complex model.
+
+### Sunny Kiluvia:
 TODO
 
 ## Resources Utilized
@@ -91,12 +143,12 @@ Python: The main programming language for our project, including the required li
 
 Jupyter Notebooks: Used to help keep our project clean and allows the numerous models we wrote to be run independently rather than simultaneously. 
 
-Generative Artificial Intelligence: This is an extrememly powerful tool for programmers and developers. We utilized AI throughout this project. It assisted with preparing the data for use in the classification algorithms (as we did not realize we needed to flatten the 3D arrays into 1D arrays for these). AI also helped us easily build the convolutional neural networks which we had not yet covered in class, gave us suggestions for hyperparameter tuning, and helped us interpret our results. Throughout the project, it was also utilized to help troubleshoot code as well as how to load in libraries which we have not yet used in class.
+Generative Artificial Intelligence: This is an extrememly powerful tool for programmers and developers. We utilized AI (notably Microsoft Copilot) throughout this project. It assisted with preparing the data for use in the classification algorithms (as we did not realize we needed to flatten the 3D arrays into 1D arrays for these). AI also helped us easily build the convolutional neural networks which we had not yet covered in class, gave us suggestions for hyperparameter tuning, and helped us interpret our results. Throughout the project, it was also utilized to help troubleshoot code as well as how to load in libraries which we have not yet used in class.
 
 ## Bugs
 This is less of a bug and more of a special note: We opted to each publish our work to our own individual branches and then Brandon (the owner of the repository) would manually add these changes to his branch and merge his branch with main. We opted to do this as a direct result of conflict issues which were becoming progress-halting.
 
-In the process of doing so, Arnab wrote an awesome Keras optimization algorithm for his LeNet-5 Convolutional Neural Network. However, it took 3 hours to run and created several large folders of data, which could not easily be uploaded to github. To circumvent this and prevent Arnab from losing his hard work, we opted to upload his entire Jupyter Notebook as a separate file to this repository. The outputs were preserved, but running the notebook is ill-advised because of how long it would take to run.
+In the process of doing so, Arnab wrote an awesome Keras optimization algorithm for his LeNet-5 Convolutional Neural Network. However, it took 3 hours to run and created several large folders of data, which could not easily be uploaded to github. To circumvent this and prevent Arnab from losing his hard work, we opted to upload his entire Jupyter Notebook as a separate file to this repository. The outputs (including the all-important test and train scores) were preserved, but running the notebook is ill-advised because of how long it would take to run.
 
 ## Update Log
 Feb 22: Created github repository, shared google drive, and slack channel for the purpose of collaboration and planning. Found dataset.
