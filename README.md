@@ -4,6 +4,8 @@
 - Sunny Kiluvia
 
 February/March 2024
+
+Due date: March 4th 2024
 ## Program Goals
 On this project we will practice both our technical and collaborative skills. We will work in groups of 3 people. The project will be divided in 3 parts: Data Exploration, Data Cleaning and Feature Engineering, and Model Selection and Evaluation. We will collaborate with our group members to complete the project. We will also be responsible for our own individual submissions.
 
@@ -92,8 +94,20 @@ Jupyter Notebooks: Used to help keep our project clean and allows the numerous m
 Generative Artificial Intelligence: This is an extrememly powerful tool for programmers and developers. We utilized AI throughout this project. It assisted with preparing the data for use in the classification algorithms (as we did not realize we needed to flatten the 3D arrays into 1D arrays for these). AI also helped us easily build the convolutional neural networks which we had not yet covered in class, gave us suggestions for hyperparameter tuning, and helped us interpret our results. Throughout the project, it was also utilized to help troubleshoot code as well as how to load in libraries which we have not yet used in class.
 
 ## Bugs
-TODO
+This is less of a bug and more of a special note: We opted to each publish our work to our own individual branches and then Brandon (the owner of the repository) would manually add these changes to his branch and merge his branch with main. We opted to do this as a direct result of conflict issues which were becoming progress-halting.
+
+In the process of doing so, Arnab wrote an awesome Keras optimization algorithm for his LeNet-5 Convolutional Neural Network. However, it took 3 hours to run and created several large folders of data, which could not easily be uploaded to github. To circumvent this and prevent Arnab from losing his hard work, we opted to upload his entire Jupyter Notebook as a separate file to this repository. The outputs were preserved, but running the notebook is ill-advised because of how long it would take to run.
 
 ## Update Log
-haha oops
+Feb 22: Created github repository, shared google drive, and slack channel for the purpose of collaboration and planning. Found dataset.
+
+Feb 26: Initial data exploration and data transformation in preparation of creating classification algorithms. Assigned classification algorithms to each group member.
+
+Feb 28: Finished and double checked Classification Algorithms. Assigned Convolutional Neural Networks to each group member.
+
+Feb 29: Made significant progress on CNNs
+
+Mar 2: Finished Single-layer CNN and LeNet-5 CNN
+
+Mar 3: Finished the main jupyter notebook, README.md, team member write-ups, and google slideshow. Made plans in preparation for presentation on March 4th.
 
