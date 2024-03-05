@@ -175,7 +175,14 @@ Single Layer CNN Final Iteration:
 While I was able to greatly improve the score of my model, it fell short of the goal of 75% classification accuracy. I made several other hyperparameter modifications following the achievement of this score, but none were able to achieve higher than 0.70 testing score. In addition, my model is clearly overfitting, as the training score is perfect but the testing score is iffy. To conclude, I cannot recommend a Single-Layer CNN be used in this case. It is far too simple of a model to be able to reliably capture the patterns in complex data. Luckily, this is not the only CNN our group created, and it is also expected to perform the worst as it is not a very complex model. On the plus side, this was great practice ahead of actually getting into neural networks in class in the coming weeks.
 
 ### Sunny Kiluvia:
-TODO
+My task was to create and perform a Decision Tree, Random Forest, Extra Trees, and Multi-layer Convolutional Neural Network. I started with the first three models, and then moved on to the CNN. I found that the first three models were not well suited for image classification, and as such, their scores were not very high. As a reminder, we have a goal of obtaining 75% or greater test classification accuracy.
+
+**Decision Tree**:  One of the most powerful tools of supervised learning algorithms used for both classification and regression tasks
+What is a good accuracy score in machine learning? Industry standards are between 70% and 90% and we were able to achieve 60% which was lower than the industry standard.
+
+**Random Forest**:  Random Forest is a popular machine learning algorithm that belongs to the supervised learning technique. It can be used for both Classification and Regression problems in ML. It is based on the concept of ensemble learning, which is a process of combining multiple classifiers to solve a complex problem and to improve the performance of the model. Training scrore was 1.0 and Testing score of 0.751, which indicates that the model is overfitting the data.
+
+**Extra Trees**:  Extra Trees is a type of ensemble learning method fundamentally based on decision tree learning. Extra Trees, short for extremely randomized trees, is a machine learning algorithm that is used for supervised learning problems. It is an ensemble learning method fundamentally based on decision tree learning. Training scrore was 1.0 and Testing score of 0.763, which indicates that the model is overfitting the data.
 
 ## Resources Utilized
 
